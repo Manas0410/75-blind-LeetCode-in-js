@@ -20,3 +20,4 @@ const helper = (nums) => {
   }
   return rob2;
 };
+//  just same as house robber
