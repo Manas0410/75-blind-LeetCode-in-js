@@ -52,3 +52,32 @@ class Tree {
     }
   }
 }
+
+// dfs
+const kLevel = (val, k) => {
+  let q = [root];
+  let valNode;
+  while (q.length) {
+    let cur = q.shift();
+    if (cur.val == val) {
+      valNode = cur;
+      break;
+    }
+    if (cur?.left) q.push(cur.left);
+    if (cur?.right) q.push(cur.right);
+  }
+
+  let res = [];
+  let curLevel = 0;
+  q = [valNode];
+  while (curLevel < k && q.length) {
+    let ql = q.length;
+    for (let i = 0; i < ql; i++) {
+      let cur = q.shift();
+      if (cur) res.push(cur.val);
+      if (cur?.left) q.push(cur.left);
+      if (cur?.right) q.push(cur.right);
+    }
+    curLevel += 1;
+  }
+};
